@@ -13,8 +13,8 @@ const list = document.querySelector('ul');
 console.log(list);
 
 ingredients.forEach(ingredient => {
-  const newLi = document.createElement('li');
-  console.log(newLi);
-  newLi.textContent = ingredient;
-  list.appendChild(newLi);
+  const newItem = document.createElement('li');
+  console.log(newItem);
+  newItem.textContent = ingredient;
+  list.appendChild(newItem);
 });
