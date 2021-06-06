@@ -18,5 +18,7 @@ refs.input.addEventListener('blur', () => {
     refs.input.classList.remove('invalid');
   } else {
     refs.input.classList.add('invalid');
+    // добавил remove('valid')
+    refs.input.classList.remove('valid');
   }
 });
