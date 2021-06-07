@@ -7,38 +7,42 @@ const refs = {
   box: document.querySelector('#box'),
 };
 
-refs.btnCreate.classList.add('createBtn');
-refs.btnClear.classList.add('destroyBtn');
-
 refs.input.addEventListener('input', onImputChange);
 refs.btnCreate.addEventListener('click', createBoxes);
 refs.btnClear.addEventListener('click', destroyBoxes);
 
 let inputValue;
 function onImputChange(event) {
-  inputValue = Number(event.currentTarget.value);
-  // console.log(typeof inputValue);
+  return (inputValue = Number(event.currentTarget.value));
 }
 
 function createBoxes(amount) {
   amount = inputValue;
-  console.log(amount);
-
+  let itemSize = 10;
   let newArr = [];
   for (let i = 1; i <= amount; i++) {
     let newBox = document.createElement('div');
-    newBox.style.width = `${50 + Math.floor(Math.random() * 350)}px`;
-    newBox.style.height = `${10 + Math.floor(Math.random() * 35)}px`;
-    newBox.style.backgroundColor = `rgb(${
-      1 + Math.floor(Math.random() * 290)
-    },${1 + Math.floor(Math.random() * 55)},${
-      1 + Math.floor(Math.random() * 111)
-    })`;
+    itemSize += 10;
+
+    newBox.style.width = itemSize + 'px';
+    newBox.style.height = itemSize + 'px';
+    // newBox.style.margin = '5px';
+    newBox.style.backgroundColor = `rgb(${Math.floor(
+      Math.random() * 330,
+    )},${Math.floor(Math.random() * 150)},${Math.floor(Math.random() * 350)})`;
     i = newArr.push(newBox);
   }
   return refs.boxes.append(...newArr);
 }
 
+// function destroyBoxes() {
+//   // window.location.reload();
+//   return;
+// }
+
 function destroyBoxes() {
-  return refs.boxes.remove('.box');
+  refs.input.value = '';
+  while (refs.boxes.firstChild) {
+    refs.boxes.firstChild.remove();
+  }
 }
