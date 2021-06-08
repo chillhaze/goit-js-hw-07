@@ -9,10 +9,19 @@ const ingredients = [
 
 const list = document.querySelector('ul');
 
-const newArr = [];
-ingredients.map(ingredient => {
+const items = ingredients.map(item => {
   const newItem = document.createElement('li');
-  newItem.textContent = ingredient;
-  newArr.push(newItem);
-  return list.append(...newArr);
+  newItem.textContent = item;
+  return newItem;
 });
+
+list.append(...items);
+
+// ----------------------------прошлый варинт решения
+// const newArr = [];
+// ingredients.map(ingredient => {
+//   const newItem = document.createElement('li');
+//   newItem.textContent = ingredient;
+//   newArr.push(newItem);
+//   return list.append(...newArr);
+// });
